@@ -13,4 +13,9 @@ public class Pause : MonoBehaviour
         panel.SetActive(false);
         Time.timeScale = 1;
     }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
 }

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Transform))]
 public class SnakeMovement : MonoBehaviour
 {
     [SerializeField] private Transform _segmentPrefab;
@@ -9,12 +8,10 @@ public class SnakeMovement : MonoBehaviour
     [SerializeField] private int _initialSize;
 
     private List<Transform> _segments = new List<Transform>();
-    private Transform _transform;
     private Vector2 _direction = Vector2.right;
 
     private void Start()
     {
-        _transform = GetComponent<Transform>();
         ResetState();
     }
 
@@ -35,9 +32,9 @@ public class SnakeMovement : MonoBehaviour
         for (int i = _segments.Count - 1; i > 0; i--)
             _segments[i].position = _segments[i - 1].position;
 
-        float x = Mathf.Round(_transform.position.x) + _direction.x;
-        float y = Mathf.Round(_transform.position.y) + _direction.y;
-        _transform.position = new Vector2(x, y);
+        float x = Mathf.Round(transform.position.x) + _direction.x;
+        float y = Mathf.Round(transform.position.y) + _direction.y;
+        transform.position = new Vector2(x, y);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -56,12 +53,12 @@ public class SnakeMovement : MonoBehaviour
             Destroy(_segments[i].gameObject);
 
         _segments.Clear();
-        _segments.Add(_transform);
+        _segments.Add(transform);
 
         for (int i = 1; i < _initialSize; i++)
             _segments.Add(Instantiate(_segmentPrefab));
 
-        _transform.position = Vector2.zero;
+        transform.position = Vector2.zero;
     }
 
     private void Grow()

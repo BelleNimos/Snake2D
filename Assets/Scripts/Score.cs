@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class EatenApples : MonoBehaviour
+public class Score : MonoBehaviour
 {
     [SerializeField] private TMP_Text _apples;
     [SerializeField] private Player _player;

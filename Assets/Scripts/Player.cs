@@ -9,9 +9,10 @@ public class Player : MonoBehaviour
         Apples = 0;
     }
 
-    public void AddApple(int apple)
+    public void AddApples(int apples)
     {
-        Apples += apple;
+        if (apples > 0)
+            Apples += apples;
     }
 
     public void ResetState()
