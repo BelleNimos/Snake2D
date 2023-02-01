@@ -7,11 +7,13 @@ public class SnakeMovement : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private int _initialSize;
 
-    private List<Transform> _segments = new List<Transform>();
-    private Vector2 _direction = Vector2.right;
+    private List<Transform> _segments;
+    private Vector2 _direction;
 
     private void Start()
     {
+        _segments = new List<Transform>();
+        _direction = Vector2.right;
         ResetState();
     }
 
@@ -41,7 +43,8 @@ public class SnakeMovement : MonoBehaviour
     {
         if (collision.TryGetComponent<Food>(out Food food))
             Grow();
-        else if (collision.TryGetComponent<Obstacle>(out Obstacle obstacle))
+
+        if (collision.TryGetComponent<Obstacle>(out Obstacle obstacle))
             ResetState();
     }
 

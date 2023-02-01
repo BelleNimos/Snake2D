@@ -4,7 +4,6 @@ using UnityEngine;
 public class Food : MonoBehaviour
 {
     [SerializeField] private BoxCollider2D _gridArea;
-    [SerializeField] private Player _player;
 
     private AudioSource _audioSource;
 
@@ -24,7 +23,7 @@ public class Food : MonoBehaviour
             RandomizePosition();
             _audioSource.volume = 1.0f;
             _audioSource.Play();
-            _player.AddApples(CountApples);
+            player.AddApples(CountApples);
         }
     }
 
